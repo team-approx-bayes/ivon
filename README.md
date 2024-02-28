@@ -9,7 +9,7 @@ Paper: https://arxiv.org/abs/2402.17641
 ## Installation of IVON
 
 To install the IVON optimizer run:
-`pip install ivon` 
+`pip install ivon-opt` 
 
 **Dependencies**
 

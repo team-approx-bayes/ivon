@@ -7,7 +7,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
 setup(
-    name="ivon",
+    name="ivon-opt",
     version="0.1",
     url="https://github.com/team-approx-bayes/ivon",
     packages=find_packages(),
