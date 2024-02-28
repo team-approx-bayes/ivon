@@ -4,11 +4,11 @@ We provide code of the IVON optimizer to train deep neural networks, along with 
 
 **Variational Learning is Effective for Large Deep Networks**  
 *Y. Shen\*, N. Daheim\*, B. Cong, P. Nickl, G.M. Marconi, C. Bazan, R. Yokota, I. Gurevych, D. Cremers, M.E. Khan, T. Möllenhoff*\
-Paper: https://arxiv.org/pdf/2402.17641.pdf
+Paper: https://arxiv.org/abs/2402.17641
 
 ## Installation of IVON
 
-To install the IVON optimizer, run:
+To install the IVON optimizer run:
 `pip install ivon` 
 
 **Dependencies**
@@ -85,8 +85,8 @@ We include three Google Colab notebooks to demonstrate the usage of the IVON opt
 @article{shen2024variational,
       title={Variational Learning is Effective for Large Deep Networks}, 
       author={Yuesong Shen and Nico Daheim and Bai Cong and Peter Nickl and Gian Maria Marconi and Clement Bazan and Rio Yokota and Iryna Gurevych and Daniel Cremers and Mohammad Emtiyaz Khan and Thomas Möllenhoff},
-      journal={arXiv preprint arXiv:2402.17641},
+      journal={arXiv:2402.17641},
       year={2024},
-      url={https://arxiv.org/pdf/2402.17641.pdf}
+      url={https://arxiv.org/abs/2402.17641}
 }
 ```
