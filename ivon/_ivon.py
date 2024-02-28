@@ -34,6 +34,7 @@ class IVON(torch.optim.Optimizer):
         clip_radius: float = float("inf"),
         sync: bool = False,
         debias: bool = True,
+        rescale_lr: bool = True
     ):
         if not 0.0 < lr:
             raise ValueError("Invalid learning rate: {}".format(lr))
@@ -76,6 +77,7 @@ class IVON(torch.optim.Optimizer):
         self._numel, self._device, self._dtype = self._get_param_configs()
         self.current_step = 0
         self.debias = debias
+        self.rescale_lr = rescale_lr
 
         # set initial temporary running averages
         self._reset_samples()
@@ -254,7 +256,7 @@ class IVON(torch.optim.Optimizer):
                 param_avg,
                 group["hess"],
                 group["momentum"],
-                lr,
+                lr * (group["hess_init"] + group["weight_decay"]) if self.rescale_lr else lr,
                 group["weight_decay"],
                 group["clip_radius"],
                 1.0 - pow(b1, float(self.current_step)) if self.debias else 1.0,
@@ -300,9 +302,7 @@ class IVON(torch.optim.Optimizer):
     def _new_param_averages(
         param_avg, hess, momentum, lr, wd, clip_radius, debias, hess_init
     ) -> Tensor:
-        # adjust lr to account for hess_init, so that first step mimics an SGD step
-        adjusted_lr = lr * (hess_init + wd) 
-        return param_avg - adjusted_lr * torch.clip(
+        return param_avg - lr * torch.clip(
             (momentum / debias + wd * param_avg) / (hess + wd),
             min=-clip_radius,
             max=clip_radius,
