@@ -4,12 +4,12 @@ We provide code of the IVON optimizer to train deep neural networks, along with 
 
 **Variational Learning is Effective for Large Deep Networks**  
 *Y. Shen\*, N. Daheim\*, B. Cong, P. Nickl, G.M. Marconi, C. Bazan, R. Yokota, I. Gurevych, D. Cremers, M.E. Khan, T. Möllenhoff*\
-(ArXiv link coming soon)
+Paper: https://arxiv.org/pdf/2402.17641.pdf
 
 ## Installation of IVON
 
-- To install the **ivon** package locally run `pip install -e .` in the current directory
-- IVON will soon be added to the Python Package Index
+To install the IVON optimizer, run:
+`pip install ivon` 
 
 **Dependencies**
 
@@ -71,8 +71,22 @@ for X, y in test_loader:
 
 ## Examples
 
-Coming soon.
+We include three Google Colab notebooks to demonstrate the usage of the IVON optimizers on small-scale problems.
+1. [2-D Logistic Regression](https://colab.research.google.com/drive/1o2XFJA8UbCiAUEKbiGFsNCwuvhZdFFfg?usp=sharing)
+    - SGD finds the mode of the weight posterior, while IVON converges to a region that is more robust to perturbation.
+2. [1-D Regression](https://colab.research.google.com/drive/1GcCCRfiZ6u7OwkYS46LGIAQKLnGL8Ae7?usp=sharing)
+    - IVON captures uncertainty in regions with little data. AdamW fails at this task.
+3. [MNIST image classification](https://colab.research.google.com/drive/1Q6MdLxmvR5Q1I2NbVXLCgGTDuP1m79tV?usp=sharing)
+    - We compare IVON to an SGD baseline.
 
 ## How to cite
 
-Coming soon.
+```
+@article{shen2024variational,
+      title={Variational Learning is Effective for Large Deep Networks}, 
+      author={Yuesong Shen and Nico Daheim and Bai Cong and Peter Nickl and Gian Maria Marconi and Clement Bazan and Rio Yokota and Iryna Gurevych and Daniel Cremers and Mohammad Emtiyaz Khan and Thomas Möllenhoff},
+      journal={arXiv preprint arXiv:2402.17641},
+      year={2024},
+      url={https://arxiv.org/pdf/2402.17641.pdf}
+}
+```
