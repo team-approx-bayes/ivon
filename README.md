@@ -1,4 +1,5 @@
 # Improved Variational Online Newton (IVON)
+[![Downloads](https://static.pepy.tech/badge/ivon-opt)](https://pepy.tech/project/ivon-opt) [![Downloads](https://static.pepy.tech/badge/ivon-opt/month)](https://pepy.tech/project/ivon-opt)
 
 We provide code of the IVON optimizer to train deep neural networks, along with a usage guide and small-scale examples.
 
@@ -17,6 +18,8 @@ Install PyTorch as described [here](https://pytorch.org/get-started/locally/): `
 
 ## Usage guide
 
+In Appendix A of the [paper](https://arxiv.org/abs/2402.17641), we provide practical guidelines for choosing IVON hyperparameters.
+
 **Training loop**
 
 In the code snippet below we demonstrate the difference in the implementation of the training loop of the IVON optimizer compared to standard optimizers like SGD or Adam.
@@ -31,7 +34,7 @@ test_loader = torch.utils.data.DataLoader(test_dataset)
 model = MLP()
 
 -optimizer = torch.optim.Adam(model.parameters())
-+optimizer = ivon.IVON(model.parameters())
++optimizer = ivon.IVON(model.parameters(), lr=0.1, ess=len(train_dataset))
 
 for X, y in train_loader:
 
@@ -49,14 +52,15 @@ for X, y in train_loader:
 
 There are two different ways of using the variational posterior of IVON for prediction:
 
-(1) Predicting at the mean of the variational posterior (fast)
+(1) IVON can be used like standard optimizers:
 
 ```
 for X, y in test_loader:
     logit = model(X)
     _, prediction = logit.max(1)
 ```
-(2) Predicting with Bayesian model averaging obtained by drawing a total of `test_samples` weight samples from the variational posterior (slower, but better inference with multiple weight samples)
+
+(2) A better way is to do posterior averaging. We can draw a total of `test_samples` weights from a Gaussian, predict with each one and average the predictions to obtain predictive probabilities. 
 
 ```
 for X, y in test_loader:
@@ -72,12 +76,12 @@ for X, y in test_loader:
 ## Examples
 
 We include three Google Colab notebooks to demonstrate the usage of the IVON optimizers on small-scale problems.
-1. [2-D Logistic Regression](https://colab.research.google.com/drive/1o2XFJA8UbCiAUEKbiGFsNCwuvhZdFFfg?usp=sharing)
-    - SGD finds the mode of the weight posterior, while IVON converges to a region that is more robust to perturbation.
+1. [MNIST image classification](https://colab.research.google.com/drive/1Q6MdLxmvR5Q1I2NbVXLCgGTDuP1m79tV?usp=sharing)
+    - We compare IVON to an SGD baseline.
 2. [1-D Regression](https://colab.research.google.com/drive/1GcCCRfiZ6u7OwkYS46LGIAQKLnGL8Ae7?usp=sharing)
     - IVON captures uncertainty in regions with little data. AdamW fails at this task.
-3. [MNIST image classification](https://colab.research.google.com/drive/1Q6MdLxmvR5Q1I2NbVXLCgGTDuP1m79tV?usp=sharing)
-    - We compare IVON to an SGD baseline.
+3. [2-D Logistic Regression](https://colab.research.google.com/drive/1o2XFJA8UbCiAUEKbiGFsNCwuvhZdFFfg?usp=sharing)
+    - SGD finds the mode of the weight posterior, while IVON converges to a region that is more robust to perturbation.
 
 ## How to cite
 
