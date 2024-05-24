@@ -8,7 +8,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setup(
     name="ivon-opt",
-    version="0.1",
+    version="0.1.1",
     url="https://github.com/team-approx-bayes/ivon",
     packages=find_packages(),
     description="An optimizer for neural networks based on variational learning",

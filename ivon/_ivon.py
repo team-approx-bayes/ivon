@@ -143,7 +143,7 @@ class IVON(torch.optim.Optimizer):
 
                 p_slice = slice(offset, offset + p.numel())
 
-                p.data = param_avg[p_slice].view(*p.shape)
+                p.data = param_avg[p_slice].view(p.shape)
                 if train:
                     if p.requires_grad:
                         param_grads.append(p.grad.flatten())
@@ -215,7 +215,7 @@ class IVON(torch.optim.Optimizer):
                 p_noise = noise_sample[offset : offset + numel]
 
                 param_avgs.append(p_avg)
-                p.data = (p_avg + p_noise).view(*p.shape)
+                p.data = (p_avg + p_noise).view(p.shape)
                 goffset += numel
                 offset += numel
             assert goffset == group["numel"]  # sanity check
@@ -268,7 +268,7 @@ class IVON(torch.optim.Optimizer):
             for p in group["params"]:
                 if p is not None:
                     p.data = param_avg[pg_offset : pg_offset + p.numel()].view(
-                        *p.shape
+                        p.shape
                     )
                     pg_offset += p.numel()
             assert pg_offset == group["numel"]  # sanity check
