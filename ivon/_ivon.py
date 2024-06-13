@@ -212,7 +212,7 @@ class IVON(torch.optim.Optimizer):
 
                 p_avg = p.data.flatten()
                 numel = p.numel()
-                p_noise = noise_sample[offset : offset + numel]
+                p_noise = noise_sample[goffset : goffset + numel]
 
                 param_avgs.append(p_avg)
                 p.data = (p_avg + p_noise).view(p.shape)
