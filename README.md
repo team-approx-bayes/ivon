@@ -3,9 +3,13 @@
 
 We provide code of the IVON optimizer to train deep neural networks, along with a usage guide and small-scale examples. For the experiments from the paper, see the [ivon-experiments](https://github.com/team-approx-bayes/ivon-experiments) repository. 
 
-**Variational Learning is Effective for Large Deep Networks**  
+**Variational Learning is Effective for Large Deep Networks**\
 *Y. Shen\*, N. Daheim\*, B. Cong, P. Nickl, G.M. Marconi, C. Bazan, R. Yokota, I. Gurevych, D. Cremers, M.E. Khan, T. Möllenhoff*\
-Paper: https://arxiv.org/abs/2402.17641
+International Conference on Machine Learning (ICML), 2024 **(spotlight)**
+
+ArXiv: https://arxiv.org/abs/2402.17641 \
+Blog: https://team-approx-bayes.github.io/blog/ivon/ \
+Tutorial: https://ysngshn.github.io/research/why-ivon/
 
 ## Installation of IVON
 
