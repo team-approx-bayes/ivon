@@ -1,7 +1,7 @@
 # Improved Variational Online Newton (IVON)
 [![Downloads](https://static.pepy.tech/badge/ivon-opt)](https://pepy.tech/project/ivon-opt) [![Downloads](https://static.pepy.tech/badge/ivon-opt/month)](https://pepy.tech/project/ivon-opt)
 
-We provide code of the IVON optimizer to train deep neural networks, along with a usage guide and small-scale examples. For the experiments from the paper, see the [ivon-experiments](https://github.com/team-approx-bayes/ivon-experiments) repository. 
+We provide PyTorch code of the IVON optimizer to train deep neural networks, along with a usage guide and small-scale examples. For the experiments from the paper, see the [ivon-experiments](https://github.com/team-approx-bayes/ivon-experiments) repository. An experimental implementation in JAX as an optax-optimizer can be found [here](https://github.com/ysngshn/ivon-optax).
 
 **Variational Learning is Effective for Large Deep Networks**\
 *Y. Shen\*, N. Daheim\*, B. Cong, P. Nickl, G.M. Marconi, C. Bazan, R. Yokota, I. Gurevych, D. Cremers, M.E. Khan, T. Möllenhoff*\
