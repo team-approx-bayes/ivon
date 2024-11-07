@@ -36,13 +36,13 @@ class IVON(torch.optim.Optimizer):
         debias: bool = True,
         rescale_lr: bool = True
     ):
-        if not 0.0 < lr:
+        if not 0.0 <= lr:
             raise ValueError("Invalid learning rate: {}".format(lr))
         if not 1 <= mc_samples:
             raise ValueError(
                 "Invalid number of MC samples: {}".format(mc_samples)
             )
-        if not 0.0 < weight_decay:
+        if not 0.0 <= weight_decay:
             raise ValueError("Invalid weight decay: {}".format(weight_decay))
         if not 0.0 < hess_init:
             raise ValueError(
@@ -52,9 +52,9 @@ class IVON(torch.optim.Optimizer):
             raise ValueError("Invalid effective sample size: {}".format(ess))
         if not 0.0 < clip_radius:
             raise ValueError("Invalid clipping radius: {}".format(clip_radius))
-        if not 0.0 < beta1 < 1.0:
+        if not 0.0 <= beta1 <= 1.0:
             raise ValueError("Invalid beta1 parameter: {}".format(beta1))
-        if not 0.0 < beta2 < 1.0:
+        if not 0.0 <= beta2 <= 1.0:
             raise ValueError("Invalid beta2 parameter: {}".format(beta2))
         if hess_approx not in self.hessian_approx_methods:
             raise ValueError("Invalid hess_approx parameter: {}".format(beta2))
